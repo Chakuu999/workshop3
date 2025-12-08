@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0a0e27;
+    min-height: 100vh;
+    padding: 30px 20px;
+    letter-spacing: 0.5px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #1a1f3a;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+h1 {
+    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+    color: white;
+    padding: 50px 30px;
+    text-align: center;
+    font-size: 3em;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);
+}
+
+h2 {
+    color: #e0e0e0;
+    padding: 30px 30px 15px;
+    font-size: 2em;
+    margin: 0;
+    font-weight: 600;
+    position: relative;
+    padding-left: 0;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background: #6d28d9;
+    border-radius: 3px;
+}
+
+h3 {
+    color: #c4b5fd;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+/* Form Styles */
+#add-movie-form {
+    background: linear-gradient(135deg, rgba(109, 40, 217, 0.08) 0%, rgba(91, 33, 182, 0.05) 100%);
+    padding: 40px 30px;
+    margin: 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(109, 40, 217, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 15px;
+    border: 2px solid rgba(109, 40, 217, 0.3);
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #0f1424;
+    color: #e0e0e0;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: rgba(224, 224, 224, 0.5);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #c4b5fd;
+    box-shadow: 0 0 0 4px rgba(196, 181, 253, 0.15);
+    background: #151d35;
+    transform: translateY(-2px);
+}
+
+button {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(196, 181, 253, 0.4);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+#search-input {
+    margin: 25px 30px;
+    width: calc(100% - 60px);
+    padding: 14px 18px;
+    border: 2px solid rgba(109, 40, 217, 0.3);
+    border-radius: 12px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #0f1424;
+    color: #e0e0e0;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #c4b5fd;
+    box-shadow: 0 0 0 4px rgba(196, 181, 253, 0.15);
+    background: #151d35;
+}   
+
+
+#search-input::placeholder {
+    color: rgba(224, 224, 224, 0.5);
+}
+
+/* Movie List */
+#movie-list {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+.movie-card {
+    background: #151d35;
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6d28d9, #5b21b6);
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(196, 181, 253, 0.25);
+    border: 1px solid rgba(196, 181, 253, 0.3);
+}
+.movie-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #e0e0e0;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.movie-genre {
+    display: inline-block;
+    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+    color: white;
+    padding: 7px 16px;
+    border-radius: 25px;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.movie-genre:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    box-shadow: 0 6px 20px rgba(196, 181, 253, 0.4);
+}
+
+.movie-year {
+    color: #888;
+    font-size: 0.95em;
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+.delete-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 18px;
+    font-size: 0.95em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(127, 29, 29, 0.2);
+}
+
+.delete-btn:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.35);
+}
+
+.delete-btn:active {
+    transform: translateY(0);
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(109, 40, 217, 0.2), transparent);
+    margin: 0;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 80px 30px;
+    color: #666;
+}
+
+.empty-state p {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(109, 40, 217, 0.05);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6d28d9, #5b21b6);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #8b5cf6, #7c3aed);
+}
+
+/* Responsive Design */
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .container {
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+        padding: 40px 20px;
+    }
+
+    h2 {
+        font-size: 1.6em;
+        padding: 25px 20px 12px;
+    }
+
+    #movie-list {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    #add-movie-form {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+
+    #search-input {
+        margin: 20px;
+        width: calc(100% - 40px);
+        padding: 12px 14px;
+    }
+
+    .movie-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+        padding: 30px 15px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        padding: 20px 15px 10px;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    .movie-card {
+        padding: 15px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 12px 14px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 12px 16px;
+        font-size: 1em;
+    }
+}
+
+.empty-state p {
+    font-size: 1.1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+        padding: 30px 15px;
+    }
+
+    #movie-list {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    #add-movie-form {
+        margin: 15px;
+    }
+
+    #search-input {
+        margin: 15px;
+        width: calc(100% - 30px);
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .movie-card {
+        padding: 15px;
+    }
+}
