@@ -54,7 +54,7 @@ form.addEventListener('submit', function(event) {
     event.preventDefault();
 
     const newMovie = {
-        id : String(allMovies.length + 1),
+        id : String(Date.now),
         title: document.getElementById('title').value,
         genre: document.getElementById('genre').value,
         year: parseInt(document.getElementById('year').value)
@@ -107,3 +107,4 @@ function deleteMovie(movieId) {
     .then(() => fetchMovies())
     .catch(error => console.error('Error deleting movie:', error));
 }
+
