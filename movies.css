@@ -160,7 +160,8 @@ button:active {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
 }
-.movie-card {
+
+.movie-item {
     background: #151d35;
     border: none;
     border-radius: 15px;
@@ -171,7 +172,7 @@ button:active {
     overflow: hidden;
 }
 
-.movie-card::before {
+.movie-item::before {
     content: '';
     position: absolute;
     top: 0;
@@ -181,42 +182,53 @@ button:active {
     background: linear-gradient(90deg, #6d28d9, #5b21b6);
 }
 
-.movie-card:hover {
+.movie-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(196, 181, 253, 0.25);
     border: 1px solid rgba(196, 181, 253, 0.3);
 }
-.movie-title {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #e0e0e0;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
+
+.movie-item p {
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 15px;
+    word-break: break-word;
 }
 
-.movie-genre {
-    display: inline-block;
+.movie-item strong {
+    color: #8b5cf6;
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.movie-item button {
+    width: 48%;
+    padding: 10px;
+    margin-right: 2%;
+    margin-bottom: 8px;
     background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
     color: white;
-    padding: 7px 16px;
-    border-radius: 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
     font-size: 0.9em;
-    margin-bottom: 15px;
-    font-weight: 500;
-    box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);
 }
 
-.movie-genre:hover {
+.movie-item button:last-of-type {
+    margin-right: 0;
+}
+
+.movie-item button:hover {
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-    box-shadow: 0 6px 20px rgba(196, 181, 253, 0.4);
-}
-
-.movie-year {
-    color: #888;
-    font-size: 0.95em;
-    margin-top: 12px;
-    font-weight: 500;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(196, 181, 253, 0.4);
 }
 
 .delete-btn {
